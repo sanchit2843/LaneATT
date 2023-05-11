@@ -5,7 +5,8 @@ import torch
 import numpy as np
 import torch.nn as nn
 from torchvision.models import resnet18, resnet34
-from mobileone import mobileone
+from .mobileone import mobileone
+from .mobilenetv3 import mobilenetv3_large
 from nms import nms
 from lib.lane import Lane
 from lib.focal_loss import FocalLoss
@@ -512,6 +513,11 @@ def get_backbone(backbone, pretrained=False):
         backbone = mobileone(num_classes=1000, inference_mode=False, variant="s0")
         backbone = torch.nn.Sequential(*list(backbone.children())[:-2])
         fmap_c = 1024
+        stride = 32
+    elif backbone == "mobilenet":
+        backbone = mobilenetv3_large()
+        backbone = torch.nn.Sequential(*list(backbone.children())[:-2])
+        fmap_c = 960
         stride = 32
     else:
         raise NotImplementedError("Backbone not implemented: `{}`".format(backbone))
