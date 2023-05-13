@@ -14,8 +14,7 @@ IMAGENET_STD = np.array([0.229, 0.224, 0.225])
 
 # helper function for drawing the annotation
 def draw_annotation( pred=None, img=None):
-    img = img * np.array(IMAGENET_STD) + np.array(IMAGENET_MEAN)
-    img = (img * 255).astype(np.uint8)
+
     color = PRED_HIT_COLOR
     for i, l in enumerate(pred):
         points = l.points
@@ -54,7 +53,7 @@ def main():
     # image_path =  "./image/3.jpg"#"./image/delhi.png"
     # image = cv2.imread(image_path)
     # for loading a video
-    input_file = cv2.VideoCapture('video.mp4')
+    input_file = cv2.VideoCapture('test.mp4')
 
     # Get the frames per second (FPS) and size of the video used for writing in the output video
     fps = int(input_file.get(cv2.CAP_PROP_FPS))
@@ -69,11 +68,7 @@ def main():
         # Stop the loop if we have reached the end of the video
         if not ret:
             break
-        print(image.shape)
-        cv2.imshow('pred', image)
-        key = cv2.waitKey(3000)#pauses for 3 seconds before fetching next image
-        if key == 27:#if ESC is pressed, exit loop
-            cv2.destroyAllWindows()
+
         # preprocessing the image
         resize_img = cv2.resize(image, (640,360))
         tensor_image = torch.from_numpy(resize_img.transpose((2, 0, 1))).float()
@@ -88,14 +83,11 @@ def main():
             predictions = model.decode(output, as_lanes=True)
             # visualize the output
             img = (images[0].cpu().permute(1, 2, 0).numpy()*255).astype(np.uint8)
-            cv2.imshow('pred', img)
-            key = cv2.waitKey(3000)#pauses for 3 seconds before fetching next image
-            if key == 27:#if ESC is pressed, exit loop
-                cv2.destroyAllWindows()
+
             img = draw_annotation( img=img, pred=predictions[0])
             
             cv2.imshow('pred', img)
-            key = cv2.waitKey(3000)#pauses for 3 seconds before fetching next image
+            key = cv2.waitKey(10)#pauses for 3 seconds before fetching next image
             if key == 27:#if ESC is pressed, exit loop
                 cv2.destroyAllWindows()
 
