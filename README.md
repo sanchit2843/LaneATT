@@ -29,13 +29,13 @@ The versions described here were the lowest the code was tested with. Therefore,
 Conda is not necessary for the installation, as you can see, I only use it for PyTorch and Torchvision.
 Nevertheless, the installation process here is described using it.
 
-```bash
+'''bash
 conda create -n laneatt python=3.8 -y
 conda activate laneatt
 conda install pytorch==1.6 torchvision -c pytorch
 pip install -r requirements.txt
 cd lib/nms; python setup.py install; cd -
-```
+'''
 
 ### 3. Getting started
 #### Datasets
@@ -56,8 +56,8 @@ unzip test_set.zip -d tusimple-test
 # test annotations
 wget "https://s3.us-east-2.amazonaws.com/benchmark-frontend/truth/1/test_label.json" -P tusimple-test/
 cd ..
-
 '''
+
 #### Training & testing
 Train a model:
 
