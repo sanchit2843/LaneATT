@@ -79,6 +79,12 @@ This command will evaluate the model saved in the last checkpoint of the experim
 If you want to evaluate another checkpoint, the `--epoch` flag can be used. For other flags, please see `python main.py -h`. To **visualize the predictions**, run the above command with the additional flag `--view all`.
 
 
+Testing on video:
+```bash
+python test.py --model_name mobilenet --cfg_path cfgs/laneatt_tusimple_mobilenet.yml --model_path mobilenet.pt --video_path test.mp4
+```
+In the above code, please replace the path to corresponding configuration, weights and video paths. 
+
 ### 4. Results
 
 The weights for each of the models can be downloaded from here:
