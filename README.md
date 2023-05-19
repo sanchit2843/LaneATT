@@ -102,3 +102,11 @@ Weights of mobileone, mobilenet and shufflenet can be downloaded from following 
 | Mobilenet | 95.18 | 0.0547 | 0.0360 | 85.95 |
 
 Qualitative Results: https://drive.google.com/file/d/1BG4OzQGubZ5yYiItCAl79LWFpXBy9Uu7/view?usp=sharing
+
+
+References:
+LaneAtt - https://github.com/lucastabelini/LaneATT
+mobileone - https://github.com/apple/ml-mobileone
+mobilenetv3 - https://github.com/d-li14/mobilenetv3.pytorch
+shufflenetv2 - https://github.com/pytorch/vision/blob/main/torchvision/models/shufflenetv2.py
+Torch-pruning - https://github.com/VainF/Torch-Pruning/tree/master
