@@ -6,14 +6,14 @@ import torch_pruning as tp
 
 model = laneatt.LaneATT(
     backbone="resnet18",
-    anchors_freq_path="/mnt/workspace/UMD/ENPM673/final_project/LaneATT/data/tusimple_anchors_freq.pt",
+    anchors_freq_path="LaneATT/data/tusimple_anchors_freq.pt",
     topk_anchors=1000,
 )
-model.load_state_dict(
-    torch.load(
-        "/mnt/workspace/UMD/ENPM673/final_project/LaneATT/laneatt_experiments/experiments/laneatt_r18_tusimple/models/model_0100.pt"
-    )["model"]
-)
+# model.load_state_dict(
+#     torch.load(
+#         "/mnt/workspace/UMD/ENPM673/final_project/LaneATT/laneatt_experiments/experiments/laneatt_r18_tusimple/models/model_0100.pt"
+#     )["model"]
+# )
 model = model  # .cuda()
 imp = tp.importance.MagnitudeImportance(p=2)
 
