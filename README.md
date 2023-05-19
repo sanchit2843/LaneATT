@@ -29,20 +29,21 @@ The versions described here were the lowest the code was tested with. Therefore,
 Conda is not necessary for the installation, as you can see, I only use it for PyTorch and Torchvision.
 Nevertheless, the installation process here is described using it.
 
-'''bash
+```bash
 conda create -n laneatt python=3.8 -y
 conda activate laneatt
 conda install pytorch==1.6 torchvision -c pytorch
 pip install -r requirements.txt
 cd lib/nms; python setup.py install; cd -
-'''
+```
 
 ### 3. Getting started
 #### Datasets
 
 We used TuSimple in our experiments
 Firstly move to directory where this repository is cloned. 
-'''bash
+
+```bash
 mkdir datasets # if it does not already exists
 cd datasets
 # train & validation data (~10 GB)
@@ -56,7 +57,7 @@ unzip test_set.zip -d tusimple-test
 # test annotations
 wget "https://s3.us-east-2.amazonaws.com/benchmark-frontend/truth/1/test_label.json" -P tusimple-test/
 cd ..
-'''
+```
 
 #### Training & testing
 Train a model:
@@ -82,10 +83,10 @@ If you want to evaluate another checkpoint, the `--epoch` flag can be used. For 
 
 The weights for each of the models can be downloaded from here:
 To check results of original resnet models, please download the experiment files from original authors using following commands.
-'''bash
+```bash
 gdown "https://drive.google.com/uc?id=1R638ou1AMncTCRvrkQY6I-11CPwZy23T"
 unzip laneatt_experiments.zip
-'''
+```
 
 Weights of mobileone, mobilenet and shufflenet can be downloaded from following link: https://drive.google.com/drive/folders/1KD3xFiFodNZwR5VsQByieXAkSaExVmqJ?usp=sharing
 #### TuSimple
