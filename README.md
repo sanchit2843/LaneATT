@@ -1,5 +1,3 @@
-<div align="center">
-
 # LaneATT
 
 Reference: https://github.com/lucastabelini/LaneATT
